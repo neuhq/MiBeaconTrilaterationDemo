@@ -111,7 +111,10 @@
         NSArray *beaconLocation1 = [beaconCoordinates objectForKey:[NSString stringWithFormat:@"%d", [beacon1.minor intValue]]];
         NSArray *beaconLocation2 = [beaconCoordinates objectForKey:[NSString stringWithFormat:@"%d", [beacon2.minor intValue]]];
         NSArray *beaconLocation3 = [beaconCoordinates objectForKey:[NSString stringWithFormat:@"%d", [beacon3.minor intValue]]];
-            
+        
+        if (beaconLocation1 && beaconLocation2 && beaconLocation3)
+        {
+        
         // ex = (P2 - P1)/(numpy.linalg.norm(P2 - P1))
         NSMutableArray *ex = [[NSMutableArray alloc] initWithCapacity:0];
         double temp = 0;
@@ -226,6 +229,11 @@
         coordinates = [trilateratedCoordinates copy];
         // if you want to store the used beacons to pass them on, uncomment line below
         //NSArray *usedBeacons = [[NSArray alloc] initWithObjects:beacon1, beacon2, beacon3, nil];
+        }
+        else
+        {
+            error = @"one ore more beacons not specified in Plist";
+        }
     }
     else
     {
