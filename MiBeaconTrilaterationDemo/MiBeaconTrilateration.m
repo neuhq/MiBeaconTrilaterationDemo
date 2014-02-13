@@ -101,134 +101,134 @@
         }
         
         // PROCEED TRILATERATION
-
+        
         // get coordinates for each beacon, minor is used to identify
         
         NSBundle *bundle = [NSBundle mainBundle];
         NSString *plistPath = [bundle pathForResource:@"beaconCoordinates" ofType:@"plist"];
         NSDictionary *beaconCoordinates = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
-
+        
         NSArray *beaconLocation1 = [beaconCoordinates objectForKey:[NSString stringWithFormat:@"%d", [beacon1.minor intValue]]];
         NSArray *beaconLocation2 = [beaconCoordinates objectForKey:[NSString stringWithFormat:@"%d", [beacon2.minor intValue]]];
         NSArray *beaconLocation3 = [beaconCoordinates objectForKey:[NSString stringWithFormat:@"%d", [beacon3.minor intValue]]];
         
         if (beaconLocation1 && beaconLocation2 && beaconLocation3)
         {
-        
-        // ex = (P2 - P1)/(numpy.linalg.norm(P2 - P1))
-        NSMutableArray *ex = [[NSMutableArray alloc] initWithCapacity:0];
-        double temp = 0;
-        for (int i = 0; i < [beaconLocation1 count]; i++) {
-            double t1 = [[beaconLocation2 objectAtIndex:i] doubleValue];
-            double t2 = [[beaconLocation1 objectAtIndex:i] doubleValue];
-            double t = t1 - t2;
-            temp += (t*t);
-        }
-        for (int i = 0; i < [beaconLocation1 count]; i++) {
-            double t1 = [[beaconLocation2 objectAtIndex:i] doubleValue];
-            double t2 = [[beaconLocation1 objectAtIndex:i] doubleValue];
-            double exx = (t1 - t2)/sqrt(temp);
-            [ex addObject:[NSNumber numberWithDouble:exx]];
-        }
-        
-        // i = dot(ex, P3 - P1)
-        NSMutableArray *p3p1 = [[NSMutableArray alloc] initWithCapacity:0];
-        for (int i = 0; i < [beaconLocation3 count]; i++) {
-            double t1 = [[beaconLocation3 objectAtIndex:i] doubleValue];
-            double t2 = [[beaconLocation1 objectAtIndex:i] doubleValue];
-            double t3 = t1 - t2;
-            [p3p1 addObject:[NSNumber numberWithDouble:t3]];
-        }
-        
-        double ival = 0;
-        for (int i = 0; i < [ex count]; i++) {
-            double t1 = [[ex objectAtIndex:i] doubleValue];
-            double t2 = [[p3p1 objectAtIndex:i] doubleValue];
-            ival += (t1*t2);
-        }
-        
-        // ey = (P3 - P1 - i*ex)/(numpy.linalg.norm(P3 - P1 - i*ex))
-        NSMutableArray *ey = [[NSMutableArray alloc] initWithCapacity:0];
-        double p3p1i = 0;
-        for (int  i = 0; i < [beaconLocation3 count]; i++) {
-            double t1 = [[beaconLocation3 objectAtIndex:i] doubleValue];
-            double t2 = [[beaconLocation1 objectAtIndex:i] doubleValue];
-            double t3 = [[ex objectAtIndex:i] doubleValue] * ival;
-            double t = t1 - t2 -t3;
-            p3p1i += (t*t);
-        }
-        for (int i = 0; i < [beaconLocation3 count]; i++) {
-            double t1 = [[beaconLocation3 objectAtIndex:i] doubleValue];
-            double t2 = [[beaconLocation1 objectAtIndex:i] doubleValue];
-            double t3 = [[ex objectAtIndex:i] doubleValue] * ival;
-            double eyy = (t1 - t2 - t3)/sqrt(p3p1i);
-            [ey addObject:[NSNumber numberWithDouble:eyy]];
-        }
-        
-        // ez = numpy.cross(ex,ey)
-        // if 2-dimensional vector then ez = 0
-        NSMutableArray *ez = [[NSMutableArray alloc] initWithCapacity:0];
-        double ezx;
-        double ezy;
-        double ezz;
-        if ([beaconLocation1 count] !=3){
-            ezx = 0;
-            ezy = 0;
-            ezz = 0;
             
-        }else{
-            ezx = ([[ex objectAtIndex:1] doubleValue]*[[ey objectAtIndex:2]doubleValue]) - ([[ex objectAtIndex:2]doubleValue]*[[ey objectAtIndex:1]doubleValue]);
-            ezy = ([[ex objectAtIndex:2] doubleValue]*[[ey objectAtIndex:0]doubleValue]) - ([[ex objectAtIndex:0]doubleValue]*[[ey objectAtIndex:2]doubleValue]);
-            ezz = ([[ex objectAtIndex:0] doubleValue]*[[ey objectAtIndex:1]doubleValue]) - ([[ex objectAtIndex:1]doubleValue]*[[ey objectAtIndex:0]doubleValue]);
-        }
-        
-        [ez addObject:[NSNumber numberWithDouble:ezx]];
-        [ez addObject:[NSNumber numberWithDouble:ezy]];
-        [ez addObject:[NSNumber numberWithDouble:ezz]];
-        
-        // d = numpy.linalg.norm(P2 - P1)
-        double d = sqrt(temp);
-        
-        // j = dot(ey, P3 - P1)
-        double jval = 0;
-        for (int i = 0; i < [ey count]; i++) {
-            double t1 = [[ey objectAtIndex:i] doubleValue];
-            double t2 = [[p3p1 objectAtIndex:i] doubleValue];
-            jval += (t1*t2);
-        }
-        
-        // x = (pow(DistA,2) - pow(DistB,2) + pow(d,2))/(2*d)
-        double xval = (pow(beacon1.accuracy,2) - pow(beacon2.accuracy,2) + pow(d,2))/(2*d);
-        
-        // y = ((pow(DistA,2) - pow(DistC,2) + pow(i,2) + pow(j,2))/(2*j)) - ((i/j)*x)
-        double yval = ((pow(beacon1.accuracy,2) - pow(beacon3.accuracy,2) + pow(ival,2) + pow(jval,2))/(2*jval)) - ((ival/jval)*xval);
-        
-        // z = sqrt(pow(DistA,2) - pow(x,2) - pow(y,2))
-        // if 2-dimensional vector then z = 0
-        double zval;
-        if ([beaconLocation1 count] !=3){
-            zval = 0;
-        }else{
-            zval = sqrt(pow(beacon1.accuracy,2) - pow(xval,2) - pow(yval,2));
-        }
-        
-        // coord = P1 + x*ex + y*ey + z*ez
-        NSMutableArray *trilateratedCoordinates = [[NSMutableArray alloc] initWithCapacity:0];
-        for (int i = 0; i < [beaconLocation1 count]; i++) {
-            double t1 = [[beaconLocation1 objectAtIndex:i] doubleValue];
-            double t2 = [[ex objectAtIndex:i] doubleValue] * xval;
-            double t3 = [[ey objectAtIndex:i] doubleValue] * yval;
-            double t4 = [[ez objectAtIndex:i] doubleValue] * zval;
-            double triptx = t1+t2+t3+t4;
-            [trilateratedCoordinates addObject:[NSNumber numberWithDouble:triptx]];
-            if (isnan(triptx))
-            {
-                error = @"at least one of the calculated coordinates is NaN";
+            // ex = (P2 - P1)/(numpy.linalg.norm(P2 - P1))
+            NSMutableArray *ex = [[NSMutableArray alloc] initWithCapacity:0];
+            double temp = 0;
+            for (int i = 0; i < [beaconLocation1 count]; i++) {
+                double t1 = [[beaconLocation2 objectAtIndex:i] doubleValue];
+                double t2 = [[beaconLocation1 objectAtIndex:i] doubleValue];
+                double t = t1 - t2;
+                temp += (t*t);
             }
-        }
-        coordinates = [trilateratedCoordinates copy];
-        // if you want to store the used beacons to pass them on, uncomment line below
-        //NSArray *usedBeacons = [[NSArray alloc] initWithObjects:beacon1, beacon2, beacon3, nil];
+            for (int i = 0; i < [beaconLocation1 count]; i++) {
+                double t1 = [[beaconLocation2 objectAtIndex:i] doubleValue];
+                double t2 = [[beaconLocation1 objectAtIndex:i] doubleValue];
+                double exx = (t1 - t2)/sqrt(temp);
+                [ex addObject:[NSNumber numberWithDouble:exx]];
+            }
+            
+            // i = dot(ex, P3 - P1)
+            NSMutableArray *p3p1 = [[NSMutableArray alloc] initWithCapacity:0];
+            for (int i = 0; i < [beaconLocation3 count]; i++) {
+                double t1 = [[beaconLocation3 objectAtIndex:i] doubleValue];
+                double t2 = [[beaconLocation1 objectAtIndex:i] doubleValue];
+                double t3 = t1 - t2;
+                [p3p1 addObject:[NSNumber numberWithDouble:t3]];
+            }
+            
+            double ival = 0;
+            for (int i = 0; i < [ex count]; i++) {
+                double t1 = [[ex objectAtIndex:i] doubleValue];
+                double t2 = [[p3p1 objectAtIndex:i] doubleValue];
+                ival += (t1*t2);
+            }
+            
+            // ey = (P3 - P1 - i*ex)/(numpy.linalg.norm(P3 - P1 - i*ex))
+            NSMutableArray *ey = [[NSMutableArray alloc] initWithCapacity:0];
+            double p3p1i = 0;
+            for (int  i = 0; i < [beaconLocation3 count]; i++) {
+                double t1 = [[beaconLocation3 objectAtIndex:i] doubleValue];
+                double t2 = [[beaconLocation1 objectAtIndex:i] doubleValue];
+                double t3 = [[ex objectAtIndex:i] doubleValue] * ival;
+                double t = t1 - t2 -t3;
+                p3p1i += (t*t);
+            }
+            for (int i = 0; i < [beaconLocation3 count]; i++) {
+                double t1 = [[beaconLocation3 objectAtIndex:i] doubleValue];
+                double t2 = [[beaconLocation1 objectAtIndex:i] doubleValue];
+                double t3 = [[ex objectAtIndex:i] doubleValue] * ival;
+                double eyy = (t1 - t2 - t3)/sqrt(p3p1i);
+                [ey addObject:[NSNumber numberWithDouble:eyy]];
+            }
+            
+            // ez = numpy.cross(ex,ey)
+            // if 2-dimensional vector then ez = 0
+            NSMutableArray *ez = [[NSMutableArray alloc] initWithCapacity:0];
+            double ezx;
+            double ezy;
+            double ezz;
+            if ([beaconLocation1 count] !=3){
+                ezx = 0;
+                ezy = 0;
+                ezz = 0;
+                
+            }else{
+                ezx = ([[ex objectAtIndex:1] doubleValue]*[[ey objectAtIndex:2]doubleValue]) - ([[ex objectAtIndex:2]doubleValue]*[[ey objectAtIndex:1]doubleValue]);
+                ezy = ([[ex objectAtIndex:2] doubleValue]*[[ey objectAtIndex:0]doubleValue]) - ([[ex objectAtIndex:0]doubleValue]*[[ey objectAtIndex:2]doubleValue]);
+                ezz = ([[ex objectAtIndex:0] doubleValue]*[[ey objectAtIndex:1]doubleValue]) - ([[ex objectAtIndex:1]doubleValue]*[[ey objectAtIndex:0]doubleValue]);
+            }
+            
+            [ez addObject:[NSNumber numberWithDouble:ezx]];
+            [ez addObject:[NSNumber numberWithDouble:ezy]];
+            [ez addObject:[NSNumber numberWithDouble:ezz]];
+            
+            // d = numpy.linalg.norm(P2 - P1)
+            double d = sqrt(temp);
+            
+            // j = dot(ey, P3 - P1)
+            double jval = 0;
+            for (int i = 0; i < [ey count]; i++) {
+                double t1 = [[ey objectAtIndex:i] doubleValue];
+                double t2 = [[p3p1 objectAtIndex:i] doubleValue];
+                jval += (t1*t2);
+            }
+            
+            // x = (pow(DistA,2) - pow(DistB,2) + pow(d,2))/(2*d)
+            double xval = (pow(beacon1.accuracy,2) - pow(beacon2.accuracy,2) + pow(d,2))/(2*d);
+            
+            // y = ((pow(DistA,2) - pow(DistC,2) + pow(i,2) + pow(j,2))/(2*j)) - ((i/j)*x)
+            double yval = ((pow(beacon1.accuracy,2) - pow(beacon3.accuracy,2) + pow(ival,2) + pow(jval,2))/(2*jval)) - ((ival/jval)*xval);
+            
+            // z = sqrt(pow(DistA,2) - pow(x,2) - pow(y,2))
+            // if 2-dimensional vector then z = 0
+            double zval;
+            if ([beaconLocation1 count] !=3){
+                zval = 0;
+            }else{
+                zval = sqrt(pow(beacon1.accuracy,2) - pow(xval,2) - pow(yval,2));
+            }
+            
+            // coord = P1 + x*ex + y*ey + z*ez
+            NSMutableArray *trilateratedCoordinates = [[NSMutableArray alloc] initWithCapacity:0];
+            for (int i = 0; i < [beaconLocation1 count]; i++) {
+                double t1 = [[beaconLocation1 objectAtIndex:i] doubleValue];
+                double t2 = [[ex objectAtIndex:i] doubleValue] * xval;
+                double t3 = [[ey objectAtIndex:i] doubleValue] * yval;
+                double t4 = [[ez objectAtIndex:i] doubleValue] * zval;
+                double triptx = t1+t2+t3+t4;
+                [trilateratedCoordinates addObject:[NSNumber numberWithDouble:triptx]];
+                if (isnan(triptx))
+                {
+                    error = @"at least one of the calculated coordinates is NaN";
+                }
+            }
+            coordinates = [trilateratedCoordinates copy];
+            // if you want to store the used beacons to pass them on, uncomment line below
+            //NSArray *usedBeacons = [[NSArray alloc] initWithObjects:beacon1, beacon2, beacon3, nil];
         }
         else
         {
