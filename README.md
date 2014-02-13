@@ -1,9 +1,9 @@
 MiBeaconTrilaterationDemo
 =========================
 
-Set the iBeacons in the .plist (identify by minor) and get coordinates of iDevice with trilateration like this:
+Set the iBeacons in the beaconCoordinates.plist (identify by minor) and get coordinates of iDevice with trilateration like this:
 
-[MiBeaconTrilaterator trilaterateWithBeacons:foundBeacons done:^(NSString *error, NSArray *coordinates) {
+    [MiBeaconTrilaterator trilaterateWithBeacons:foundBeacons done:^(NSString *error, NSArray *coordinates) {
         if ([error isEqualToString:@""])
         {
             float x = [[coordinates objectAtIndex:0] floatValue];
@@ -19,4 +19,4 @@ Set the iBeacons in the .plist (identify by minor) and get coordinates of iDevic
             [xyResult setText:@"unable to trilaterate"];
             [selfView setHidden:YES];
         }
-}];
+    }];
