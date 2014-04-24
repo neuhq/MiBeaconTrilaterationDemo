@@ -7,24 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D43806561909603C004414D7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D43806531909603C004414D7 /* AppDelegate.m */; };
+		D43806571909603C004414D7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D43806551909603C004414D7 /* ViewController.m */; };
+		D438065A19096044004414D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D438065819096044004414D7 /* Main.storyboard */; };
+		D438065E19096051004414D7 /* beaconCoordinates.plist in Resources */ = {isa = PBXBuildFile; fileRef = D438065B19096051004414D7 /* beaconCoordinates.plist */; };
+		D438065F19096051004414D7 /* MiBeaconTrilateration.m in Sources */ = {isa = PBXBuildFile; fileRef = D438065D19096051004414D7 /* MiBeaconTrilateration.m */; };
+		D43806631909606D004414D7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D43806601909606D004414D7 /* main.m */; };
+		D43806641909606D004414D7 /* MiBeaconTrilaterationDemo-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D43806611909606D004414D7 /* MiBeaconTrilaterationDemo-Info.plist */; };
+		D438066719096074004414D7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D438066519096074004414D7 /* InfoPlist.strings */; };
 		D5D740BC188D1EA90080AFDA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D740BB188D1EA90080AFDA /* Foundation.framework */; };
 		D5D740BE188D1EA90080AFDA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D740BD188D1EA90080AFDA /* CoreGraphics.framework */; };
 		D5D740C0188D1EA90080AFDA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D740BF188D1EA90080AFDA /* UIKit.framework */; };
-		D5D740C6188D1EA90080AFDA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D5D740C4188D1EA90080AFDA /* InfoPlist.strings */; };
-		D5D740C8188D1EA90080AFDA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D740C7188D1EA90080AFDA /* main.m */; };
-		D5D740CC188D1EA90080AFDA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D740CB188D1EA90080AFDA /* AppDelegate.m */; };
-		D5D740D2188D1EA90080AFDA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5D740D1188D1EA90080AFDA /* ViewController.m */; };
 		D5D740DB188D1EA90080AFDA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D740DA188D1EA90080AFDA /* XCTest.framework */; };
 		D5D740DC188D1EA90080AFDA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D740BB188D1EA90080AFDA /* Foundation.framework */; };
 		D5D740DD188D1EA90080AFDA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D740BF188D1EA90080AFDA /* UIKit.framework */; };
 		D5D740F1188D1EC00080AFDA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D740F0188D1EC00080AFDA /* CoreLocation.framework */; };
 		E021B4461899A0A100FD6057 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E021B4451899A0A100FD6057 /* Default-568h@2x.png */; };
-		E0AEA74618ACF88C00750AC1 /* beaconCoordinates.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0AEA74518ACF88B00750AC1 /* beaconCoordinates.plist */; };
-		E0AEA74718AD06D400750AC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5D740CD188D1EA90080AFDA /* Main.storyboard */; };
 		E0AEA75F18AD1DDF00750AC1 /* icon58.png in Resources */ = {isa = PBXBuildFile; fileRef = E0AEA75818AD1DDF00750AC1 /* icon58.png */; };
 		E0AEA76118AD1DDF00750AC1 /* icon80.png in Resources */ = {isa = PBXBuildFile; fileRef = E0AEA75A18AD1DDF00750AC1 /* icon80.png */; };
 		E0AEA76218AD1DDF00750AC1 /* icon120.png in Resources */ = {isa = PBXBuildFile; fileRef = E0AEA75B18AD1DDF00750AC1 /* icon120.png */; };
-		E0AEA76718AD1F5300750AC1 /* MiBeaconTrilateration.m in Sources */ = {isa = PBXBuildFile; fileRef = E0AEA76618AD1F5300750AC1 /* MiBeaconTrilateration.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,29 +39,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D43806521909603C004414D7 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = MiBeaconTrilaterationDemo/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		D43806531909603C004414D7 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = MiBeaconTrilaterationDemo/AppDelegate.m; sourceTree = SOURCE_ROOT; };
+		D43806541909603C004414D7 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = MiBeaconTrilaterationDemo/ViewController.h; sourceTree = SOURCE_ROOT; };
+		D43806551909603C004414D7 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = MiBeaconTrilaterationDemo/ViewController.m; sourceTree = SOURCE_ROOT; };
+		D438065919096044004414D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = MiBeaconTrilaterationDemo/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
+		D438065B19096051004414D7 /* beaconCoordinates.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = beaconCoordinates.plist; path = MiBeaconTrilaterationDemo/beaconCoordinates.plist; sourceTree = SOURCE_ROOT; };
+		D438065C19096051004414D7 /* MiBeaconTrilateration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiBeaconTrilateration.h; path = MiBeaconTrilaterationDemo/MiBeaconTrilateration.h; sourceTree = SOURCE_ROOT; };
+		D438065D19096051004414D7 /* MiBeaconTrilateration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiBeaconTrilateration.m; path = MiBeaconTrilaterationDemo/MiBeaconTrilateration.m; sourceTree = SOURCE_ROOT; };
+		D43806601909606D004414D7 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = MiBeaconTrilaterationDemo/main.m; sourceTree = SOURCE_ROOT; };
+		D43806611909606D004414D7 /* MiBeaconTrilaterationDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "MiBeaconTrilaterationDemo-Info.plist"; path = "MiBeaconTrilaterationDemo/MiBeaconTrilaterationDemo-Info.plist"; sourceTree = SOURCE_ROOT; };
+		D43806621909606D004414D7 /* MiBeaconTrilaterationDemo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MiBeaconTrilaterationDemo-Prefix.pch"; path = "MiBeaconTrilaterationDemo/MiBeaconTrilaterationDemo-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		D438066619096074004414D7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = MiBeaconTrilaterationDemo/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		D5D740B8188D1EA90080AFDA /* MiBeaconTrilaterationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiBeaconTrilaterationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5D740BB188D1EA90080AFDA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D5D740BD188D1EA90080AFDA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		D5D740BF188D1EA90080AFDA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		D5D740C3188D1EA90080AFDA /* MiBeaconTrilaterationDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "MiBeaconTrilaterationDemo-Info.plist"; path = "MiBeaconTrilaterationDemo/MiBeaconTrilaterationDemo-Info.plist"; sourceTree = "<group>"; };
-		D5D740C5188D1EA90080AFDA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D5D740C7188D1EA90080AFDA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = MiBeaconTrilaterationDemo/main.m; sourceTree = "<group>"; };
-		D5D740C9188D1EA90080AFDA /* MiBeaconTrilaterationDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MiBeaconTrilaterationDemo-Prefix.pch"; path = "MiBeaconTrilaterationDemo/MiBeaconTrilaterationDemo-Prefix.pch"; sourceTree = "<group>"; };
-		D5D740CA188D1EA90080AFDA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = MiBeaconTrilaterationDemo/AppDelegate.h; sourceTree = "<group>"; };
-		D5D740CB188D1EA90080AFDA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = MiBeaconTrilaterationDemo/AppDelegate.m; sourceTree = "<group>"; };
-		D5D740CE188D1EA90080AFDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D5D740D0188D1EA90080AFDA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = MiBeaconTrilaterationDemo/ViewController.h; sourceTree = "<group>"; };
-		D5D740D1188D1EA90080AFDA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = MiBeaconTrilaterationDemo/ViewController.m; sourceTree = "<group>"; };
 		D5D740D9188D1EA90080AFDA /* MiBeaconTrilaterationDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiBeaconTrilaterationDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5D740DA188D1EA90080AFDA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D5D740F0188D1EC00080AFDA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E021B4451899A0A100FD6057 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		E0AEA74518ACF88B00750AC1 /* beaconCoordinates.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; name = beaconCoordinates.plist; path = MiBeaconTrilaterationDemo/beaconCoordinates.plist; sourceTree = "<group>"; };
 		E0AEA75818AD1DDF00750AC1 /* icon58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon58.png; sourceTree = SOURCE_ROOT; };
 		E0AEA75A18AD1DDF00750AC1 /* icon80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon80.png; sourceTree = SOURCE_ROOT; };
 		E0AEA75B18AD1DDF00750AC1 /* icon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon120.png; sourceTree = SOURCE_ROOT; };
-		E0AEA76518AD1F5300750AC1 /* MiBeaconTrilateration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiBeaconTrilateration.h; path = MiBeaconTrilaterationDemo/MiBeaconTrilateration.h; sourceTree = "<group>"; };
-		E0AEA76618AD1F5300750AC1 /* MiBeaconTrilateration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiBeaconTrilateration.m; path = MiBeaconTrilaterationDemo/MiBeaconTrilateration.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,11 +123,11 @@
 		D5D740C1188D1EA90080AFDA /* MiBeaconTrilaterationDemo */ = {
 			isa = PBXGroup;
 			children = (
-				D5D740CA188D1EA90080AFDA /* AppDelegate.h */,
-				D5D740CB188D1EA90080AFDA /* AppDelegate.m */,
-				D5D740CD188D1EA90080AFDA /* Main.storyboard */,
-				D5D740D0188D1EA90080AFDA /* ViewController.h */,
-				D5D740D1188D1EA90080AFDA /* ViewController.m */,
+				D43806521909603C004414D7 /* AppDelegate.h */,
+				D438065819096044004414D7 /* Main.storyboard */,
+				D43806531909603C004414D7 /* AppDelegate.m */,
+				D43806541909603C004414D7 /* ViewController.h */,
+				D43806551909603C004414D7 /* ViewController.m */,
 				E0AEA76418AD1F5300750AC1 /* MiBeaconTrilateration */,
 				D5D740C2188D1EA90080AFDA /* Supporting Files */,
 			);
@@ -137,13 +138,13 @@
 		D5D740C2188D1EA90080AFDA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D438066519096074004414D7 /* InfoPlist.strings */,
+				D43806601909606D004414D7 /* main.m */,
+				D43806611909606D004414D7 /* MiBeaconTrilaterationDemo-Info.plist */,
+				D43806621909606D004414D7 /* MiBeaconTrilaterationDemo-Prefix.pch */,
 				E0AEA75818AD1DDF00750AC1 /* icon58.png */,
 				E0AEA75A18AD1DDF00750AC1 /* icon80.png */,
 				E0AEA75B18AD1DDF00750AC1 /* icon120.png */,
-				D5D740C3188D1EA90080AFDA /* MiBeaconTrilaterationDemo-Info.plist */,
-				D5D740C4188D1EA90080AFDA /* InfoPlist.strings */,
-				D5D740C7188D1EA90080AFDA /* main.m */,
-				D5D740C9188D1EA90080AFDA /* MiBeaconTrilaterationDemo-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -151,9 +152,9 @@
 		E0AEA76418AD1F5300750AC1 /* MiBeaconTrilateration */ = {
 			isa = PBXGroup;
 			children = (
-				E0AEA74518ACF88B00750AC1 /* beaconCoordinates.plist */,
-				E0AEA76518AD1F5300750AC1 /* MiBeaconTrilateration.h */,
-				E0AEA76618AD1F5300750AC1 /* MiBeaconTrilateration.m */,
+				D438065B19096051004414D7 /* beaconCoordinates.plist */,
+				D438065C19096051004414D7 /* MiBeaconTrilateration.h */,
+				D438065D19096051004414D7 /* MiBeaconTrilateration.m */,
 			);
 			name = MiBeaconTrilateration;
 			path = MiBeaconTrilaterationDemo/MiBeaconTrilateration;
@@ -242,13 +243,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D438065A19096044004414D7 /* Main.storyboard in Resources */,
+				D438066719096074004414D7 /* InfoPlist.strings in Resources */,
 				E0AEA75F18AD1DDF00750AC1 /* icon58.png in Resources */,
 				E021B4461899A0A100FD6057 /* Default-568h@2x.png in Resources */,
-				E0AEA74718AD06D400750AC1 /* Main.storyboard in Resources */,
-				D5D740C6188D1EA90080AFDA /* InfoPlist.strings in Resources */,
 				E0AEA76118AD1DDF00750AC1 /* icon80.png in Resources */,
+				D438065E19096051004414D7 /* beaconCoordinates.plist in Resources */,
 				E0AEA76218AD1DDF00750AC1 /* icon120.png in Resources */,
-				E0AEA74618ACF88C00750AC1 /* beaconCoordinates.plist in Resources */,
+				D43806641909606D004414D7 /* MiBeaconTrilaterationDemo-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,10 +268,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5D740D2188D1EA90080AFDA /* ViewController.m in Sources */,
-				D5D740CC188D1EA90080AFDA /* AppDelegate.m in Sources */,
-				E0AEA76718AD1F5300750AC1 /* MiBeaconTrilateration.m in Sources */,
-				D5D740C8188D1EA90080AFDA /* main.m in Sources */,
+				D43806571909603C004414D7 /* ViewController.m in Sources */,
+				D438065F19096051004414D7 /* MiBeaconTrilateration.m in Sources */,
+				D43806631909606D004414D7 /* main.m in Sources */,
+				D43806561909603C004414D7 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,22 +293,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D5D740C4188D1EA90080AFDA /* InfoPlist.strings */ = {
+		D438065819096044004414D7 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D5D740C5188D1EA90080AFDA /* en */,
-			);
-			name = InfoPlist.strings;
-			path = MiBeaconTrilaterationDemo;
-			sourceTree = "<group>";
-		};
-		D5D740CD188D1EA90080AFDA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D5D740CE188D1EA90080AFDA /* Base */,
+				D438065919096044004414D7 /* Base */,
 			);
 			name = Main.storyboard;
-			path = MiBeaconTrilaterationDemo;
+			sourceTree = "<group>";
+		};
+		D438066519096074004414D7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D438066619096074004414D7 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
